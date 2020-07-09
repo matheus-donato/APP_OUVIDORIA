@@ -64,35 +64,35 @@ def main():
             temas_print(df.Promotoria.tolist())
 
     else:
-        st.title("Outra funcionalidade")
+        st.markdown("## Em construção :wrench:")
 
-        arquivo = st.file_uploader("Anexe um arquivo .xlsx (Planilha Excel)",type="xlsx")
-        coluna_texto = st.text_input("Nome da coluna com os textos")
+    #     arquivo = st.file_uploader("Anexe um arquivo .xlsx (Planilha Excel)",type="xlsx")
+    #     coluna_texto = st.text_input("Nome da coluna com os textos")
 
-        if arquivo is not None:
-            df = pd.read_excel(arquivo).head(8)
-            st.write(df)
+    #     if arquivo is not None:
+    #         df = pd.read_excel(arquivo).head(8)
+    #         st.write(df)
 
-            if st.button("Classificar"):
+    #         if st.button("Classificar"):
             
-                st.markdown("### Resultados")
+    #             st.markdown("### Resultados")
 
-                #Chama a API e constroi dataframe com resultados
-                lista_df = []
-                with st.spinner("Classificando textos..."):
-                    for texto in df[coluna_texto]:
-                        r = api_results_data_frame(texto)
-                        r["Texto"] = texto
-                        r = r.sort_values("Probabilidade",ascending = False).head(5)
+    #             #Chama a API e constroi dataframe com resultados
+    #             lista_df = []
+    #             with st.spinner("Classificando textos..."):
+    #                 for texto in df[coluna_texto]:
+    #                     r = api_results_data_frame(texto)
+    #                     r["Texto"] = texto
+    #                     r = r.sort_values("Probabilidade",ascending = False).head(5)
 
-                        st.write(r)
+    #                     st.write(r)
 
-                st.success("Classificação finalizada")
+    #             st.success("Classificação finalizada")
 
-                df_final = r
+    #             df_final = r
 
-                st.write(df_final)
-                st.markdown(get_table_download_link(df_final), unsafe_allow_html=True)
+    #             st.write(df_final)
+    #             st.markdown(get_table_download_link(df_final), unsafe_allow_html=True)
 
 if __name__=="__main__":
     main()
