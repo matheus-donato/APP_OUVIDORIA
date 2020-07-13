@@ -38,7 +38,7 @@ def temas_print(temas:list):
 def main():
 
     #Criando barra lateral
-    st.sidebar.image("images/logo_azul_horizontal-05.png",use_column_width = True)
+    st.sidebar.image("images/logo_desenvolvido-01.png",use_column_width = True)
     fun_select = st.sidebar.selectbox(
         "",
         ("Classificação direta","Classificação a partir de um arquivo"))
@@ -53,7 +53,7 @@ def main():
 
         if st.button('Classificar'):
 
-            #Chama a API e constroi dataframe com resultados
+        #Chama a API e constroi dataframe com resultados
             df = api_results_data_frame(texto)
 
             #Refinando resuldados
@@ -62,6 +62,7 @@ def main():
             #Mostrando o resultado        
             local_css("style.css")
             temas_print(df.Promotoria.tolist())
+    
 
     else:
         st.markdown("## Em construção :wrench:")
@@ -94,5 +95,11 @@ def main():
     #             st.write(df_final)
     #             st.markdown(get_table_download_link(df_final), unsafe_allow_html=True)
 
+hide_footer_style = """
+        <style>
+        .reportview-container .main footer {visibility: hidden;}    
+        """
+st.markdown(hide_footer_style, unsafe_allow_html=True)
+        
 if __name__=="__main__":
     main()
