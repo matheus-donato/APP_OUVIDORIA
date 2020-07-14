@@ -65,35 +65,31 @@ def main():
     
 
     else:
-        st.markdown("## Em construção :wrench:")
+    #    st.markdown("## Em construção :wrench:")
 
-    #     arquivo = st.file_uploader("Anexe um arquivo .xlsx (Planilha Excel)",type="xlsx")
-    #     coluna_texto = st.text_input("Nome da coluna com os textos")
+        arquivo = st.file_uploader("Anexe um arquivo .xlsx (Planilha Excel)",type="xlsx")
+        coluna_texto = st.text_input("Nome da coluna com os textos")
+        if arquivo is not None:
+            df = pd.read_excel(arquivo).head(8)
+            st.write(df)
 
-    #     if arquivo is not None:
-    #         df = pd.read_excel(arquivo).head(8)
-    #         st.write(df)
-
-    #         if st.button("Classificar"):
+            if st.button("Classificar"):
             
-    #             st.markdown("### Resultados")
+                st.markdown("### Resultados")
 
-    #             #Chama a API e constroi dataframe com resultados
-    #             lista_df = []
-    #             with st.spinner("Classificando textos..."):
-    #                 for texto in df[coluna_texto]:
-    #                     r = api_results_data_frame(texto)
-    #                     r["Texto"] = texto
-    #                     r = r.sort_values("Probabilidade",ascending = False).head(5)
+                #Chama a API e constroi dataframe com resultados
+                df_final = pd.DataFrame()
+                with st.spinner("Classificando textos..."):
+                    for texto in df[coluna_texto]:
+                        r = api_results_data_frame(texto)
+                        r["Texto"] = texto
+                        r = r.query("Probabilidade > 0.1").sort_values("Probabilidade",ascending = False).reset_index()
+                        r = r.groupby("Texto").agg(Promotorias = ("Promotoria",", ".join)).reset_index()
 
-    #                     st.write(r)
+                        df_final = pd.concat([df_final,r],ignore_index=True)
+                st.success("Classificação finalizada")
 
-    #             st.success("Classificação finalizada")
-
-    #             df_final = r
-
-    #             st.write(df_final)
-    #             st.markdown(get_table_download_link(df_final), unsafe_allow_html=True)
+                st.markdown(get_table_download_link(df_final), unsafe_allow_html=True)
 
 hide_footer_style = """
         <style>
