@@ -66,10 +66,11 @@ def main():
     #Classificação a partir de um arquivo
     else:
         arquivo = st.file_uploader("Anexe um arquivo .xlsx (Planilha Excel)",type="xlsx")
-        coluna_texto = st.text_input("Escreva o nome da coluna com os textos e pressione enter.")
-
+        #coluna_texto = st.text_input("Escreva o nome da coluna com os textos e pressione enter.")
         if arquivo is not None:
             df = pd.read_excel(arquivo)
+            df.columns.str.title()
+            coluna_texto = df.columns.tolist()[0]
             st.write(df.head(8))
 
             if st.button("Classificar"):
