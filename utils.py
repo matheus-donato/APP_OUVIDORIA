@@ -2,7 +2,7 @@ def api_classificador(texto,endpoint,tema=None):
     import requests
 
     #url = "https://api-ouvidoria.herokuapp.com/classificacao"
-    url = f"http://127.0.0.1:5000/{endpoint}"
+    url = f"https://api-ouvidoria.herokuapp.com/{endpoint}"
     payload = {}
     token = get_token()
     if 'temas' in endpoint:
@@ -25,7 +25,7 @@ def api_classificador(texto,endpoint,tema=None):
 def get_token():
     import json
     import requests
-    url = "http://127.0.0.1:5000/auth"
+    url = "https://api-ouvidoria.herokuapp.com/auth"
 
     payload = {"username": "Inova","password":"inova*mprj1"}
     headers = {
