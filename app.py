@@ -57,6 +57,7 @@ def main():
         st.title("Classificador de temas da ouvidoria")
 
         texto = st.text_area("Cole o texto da denúncia aqui:")
+        texto = ' '.join(texto.split())
 
         session_state = SessionState.get(name="", classificar = False)
         classificar = st.button('Temas')
@@ -99,43 +100,6 @@ def main():
                     #temas_selecionados = st.multiselect('', temas_preditos, default=temas_preditos)
                     local_css("style.css")
                     temas_print(temas_preditos)
-            
-    # #Classificação a partir de um arquivo
-    # else:
-    #     arquivo = st.file_uploader("Anexe um arquivo .xlsx (Planilha Excel)",type="xlsx")
-    #     #coluna_texto = st.text_input("Escreva o nome da coluna com os textos e pressione enter.")
-    #     if arquivo is not None:
-    #         df = pd.read_excel(arquivo)
-    #         df.columns.str.title()
-    #         coluna_texto = df.columns.tolist()[0]
-    #         st.write(df.head(8))
-
-    #         if st.button("Classificar"):
-            
-    #             st.markdown("### Resultados")
-
-    #             #Chama a API e constroi dataframe com resultados
-    #             df_final = pd.DataFrame()
-    #             my_bar = st.progress(0)                
-    #             n_texto = 0
-    #             passos = 1/len(df[coluna_texto])
-
-    #             for texto in df[coluna_texto]:
-    #                 r = api_results_data_frame(texto)
-
-    #                 #Refinando resultados
-    #                 r["Texto"] = texto
-    #                 r = r.query("Probabilidade >= 0.1").sort_values("Probabilidade",ascending = False).reset_index()
-    #                 r = r.groupby("Texto").agg(Promotorias = ("Promotoria",", ".join)).reset_index()
-
-    #                 #Atualizando resultado final
-    #                 df_final = pd.concat([df_final,r],ignore_index=True)
-    #                 time.sleep(0.5)
-    #                 n_texto += passos
-    #                 my_bar.progress(n_texto)
-
-    #             #Disponibiliza download da planilha com resultados
-    #             st.markdown(get_table_download_link(df_final), unsafe_allow_html=True)
 
 #Removendo rodapé com o nome do streamlit
 hide_footer_style = """
