@@ -4,7 +4,11 @@ Este [WebApp](https://app-ouvidoria-subtemas.herokuapp.com/) é a interface grá
 Foi utilizada a plataforma [Heroku](https://www.heroku.com/) e a biblioteca [stramlit](https://www.streamlit.io/) para criação do app.
 
 
-#como funciona
+## Utilização e interação 
+
+É possível utilizar-se do web app selecionando a classificação direta.
+Somente os resultados gerados pelo modelo com probabilidade maior que 90% são reportados.
+Por forma direta faz-se refência a utilização da caixa de texto implementada no aplicativo, onde é possível colar um texto ou escrever uma suposta denúncia para ser classificada.
 
 
 
