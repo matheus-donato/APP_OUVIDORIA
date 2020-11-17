@@ -1,7 +1,7 @@
 # APP_OUVIDORIA
 
 Este [WebApp](https://app-ouvidoria-subtemas.herokuapp.com/) é a interface gráfica de uma [Api](https://github.com/matheus-donato/API_OUVIDORIA) desenvolvida pelo [Inova_MPRJ](http://www.mprj.mp.br/inova) com a finalidade de permitir a interação com o modelo multi-label de classificação de temas e subtemas das denúncias e reclamações prestadas a [Ouvidoria]().
-Foi utilizada a plataforma [Heroku](https://www.heroku.com/) por meio do [stramlit](https://www.streamlit.io/)
+Foi utilizada a plataforma [Heroku](https://www.heroku.com/) e a biblioteca [stramlit](https://www.streamlit.io/) para criação do app.
 
 
 #como funciona
