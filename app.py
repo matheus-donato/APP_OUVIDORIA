@@ -9,7 +9,7 @@ from local_css import local_css
 import time
 
 def api_results_data_frame(texto):
-    resultado = api_classificador(texto)
+    resultado = api_classificador(texto,endpoint='ouvidoria')
     resultado_json = json.loads(resultado)
     df = pd.DataFrame({"Promotoria": resultado_json["temas"],"Probabilidade":resultado_json["p"]})
     return df
