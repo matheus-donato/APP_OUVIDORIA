@@ -16,7 +16,7 @@ def api_results_data_frame(texto):
 
 def to_excel(df):
     output = BytesIO()
-    writer = ExcelWriter(output,engine="xlsxwriter")
+    writer = ExcelWriter(output,engine="openpyxl")
     df.to_excel(writer)
     writer.save()
     processed_data = output.getvalue()
