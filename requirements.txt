@@ -1,5 +1,5 @@
 pandas
-streamlit==0.85
+streamlit==1.30.0
 xlrd==1.2.0
 openpyxl==3.0.9
 requests
